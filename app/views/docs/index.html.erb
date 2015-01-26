@@ -1,0 +1,18 @@
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Number</th>
+    <th>Date of Issue</th>
+    <th>Link</th>
+    <th>Title</th>
+  </tr>
+  <% @docs.each do |doc| %>
+  <tr>
+    <td><%= doc.id %></td>
+    <td><%= doc.number %></td>
+    <td><%= doc.date_of_issue %></td>
+    <td><%= doc.link %></td>
+    <td><%= doc.title %></td>
+  </tr>
+  <% end %>
+</table>

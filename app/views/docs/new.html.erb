@@ -1,11 +1,18 @@
 <%= link_to "Docs", docs_path %>
 
-<%= form_for(doc) do |f| %>
+<%= form_for(@doc) do |f| %>
 <table>
   <tr>
+    <td>Number</td>
     <td><%= f.text_field :number %></td>
+  </tr>
+  <td>Date of Issue</td>
     <td><%= f.text_field :date_of_issue %></td>
+  </tr>
+  <td>Link</td>
     <td><%= f.text_field :link %></td>
+  <tr>
+    <td>title</td>
     <td><%= f.text_field :title %></td>
   </tr>
 </table>

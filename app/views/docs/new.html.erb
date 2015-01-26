@@ -1,0 +1,13 @@
+<%= link_to "Docs", docs_path %>
+
+<%= form_for(doc) do |f| %>
+<table>
+  <tr>
+    <td><%= f.text_field :number %></td>
+    <td><%= f.text_field :date_of_issue %></td>
+    <td><%= f.text_field :link %></td>
+    <td><%= f.text_field :title %></td>
+  </tr>
+</table>
+<%= f.submit %>
+<% end %>

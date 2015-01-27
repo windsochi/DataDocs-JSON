@@ -1,12 +1,9 @@
 class DocsController < ApplicationController
+  respond_to :json, :html
 
   def index
     @docs = Doc.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @docs}
-    end
+    respond_with doc_json
   end
 
   def new
@@ -38,6 +35,10 @@ class DocsController < ApplicationController
 
   def doc_params
     params.require(:doc).permit(:number, :link, :date_of_issue, :title, :description)
+  end
+
+  def doc_json
+    Doc.last
   end
 
 end

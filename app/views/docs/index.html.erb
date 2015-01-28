@@ -13,6 +13,7 @@
     <td><%= doc.date_of_issue %></td>
     <td><%= doc.link %></td>
     <td><%= doc.title %></td>
+    <td><%= link_to 'Удалить', doc_path(doc), method: :delete %></td>
   </tr>
   <% end %>
 </table>

@@ -1,6 +1,7 @@
 class DocsController < ApplicationController
   before_filter :cors_preflight_check
   after_filter :cors_set_access_control_headers
+  before_action :find_doc, only: [:destroy]
 
   def index
     respond_to do |format|
@@ -51,6 +52,8 @@ class DocsController < ApplicationController
   end
 
   def destroy
+    @doc.destroy
+    redirect_to docs_path
   end
 
   private
@@ -63,5 +66,8 @@ class DocsController < ApplicationController
     Doc.last
   end
 
+  def find_doc
+    @doc = Doc.find(params[:id])
+  end
 end
 

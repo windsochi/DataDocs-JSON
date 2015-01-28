@@ -1,9 +1,13 @@
 class DocsController < ApplicationController
-  respond_to :json, :html
 
   def index
-    @docs = Doc.all
-    respond_with doc_json
+    respond_to do |format|
+      format.html {render text: "Data"}
+      format.json {render json:
+        Doc.where(date_of_issue: params[:start]..params[:finish])
+        #http://localhost:3000/docs.json?start=2002-01-01&finish=2002-12-31
+      }
+    end
   end
 
   def new

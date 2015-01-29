@@ -1,4 +1,5 @@
 class DocsController < ApplicationController
+  before_filter :authenticate
   before_filter :cors_preflight_check
   after_filter :cors_set_access_control_headers
   before_action :find_doc, only: [:destroy]
@@ -69,5 +70,14 @@ class DocsController < ApplicationController
   def find_doc
     @doc = Doc.find(params[:id])
   end
+
+  protected
+
+  def authenticate
+    authenticate_or_request_with_http_basic do |username, password|
+      username == "sochi" && password == "sochi"
+    end
+  end
+
 end
 

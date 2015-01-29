@@ -1,5 +1,4 @@
 class DocsController < ApplicationController
-  before_filter :authenticate
   before_filter :cors_preflight_check
   after_filter :cors_set_access_control_headers
   before_action :find_doc, only: [:destroy]
@@ -30,18 +29,18 @@ class DocsController < ApplicationController
     end
   end
 
-  def new
-    @doc = Doc.new
-  end
+  # def new
+  #   @doc = Doc.new
+  # end
 
-  def create
-    @doc = Doc.new(doc_params)
-    if @doc.save
-      redirect_to docs_path
-    else
-      redirect_to new_doc_path
-    end
-  end
+  # def create
+  #   @doc = Doc.new(doc_params)
+  #   if @doc.save
+  #     redirect_to docs_path
+  #   else
+  #     redirect_to new_doc_path
+  #   end
+  # end
 
   def show
   end
@@ -52,10 +51,10 @@ class DocsController < ApplicationController
   def update
   end
 
-  def destroy
-    @doc.destroy
-    redirect_to docs_path
-  end
+  # def destroy
+  #   @doc.destroy
+  #   redirect_to docs_path
+  # end
 
   private
 
@@ -70,14 +69,5 @@ class DocsController < ApplicationController
   def find_doc
     @doc = Doc.find(params[:id])
   end
-
-  protected
-
-  def authenticate
-    authenticate_or_request_with_http_basic do |username, password|
-      username == "sochi" && password == "sochi"
-    end
-  end
-
 end
 

@@ -6,11 +6,14 @@
     <td>Number</td>
     <td><%= f.text_field :number %></td>
   </tr>
-  <td>Date of Issue</td>
-    <td><%= f.text_field :date_of_issue %></td>
+  <tr>
+    <td>Date of Issue</td>
+    <td><%= f.date_field :date_of_issue dateFormat: "yyyy-mm-dd" %></td>
   </tr>
-  <td>Link</td>
+  <tr>
+    <td>Link</td>
     <td><%= f.text_field :link %></td>
+  </tr>
   <tr>
     <td>title</td>
     <td><%= f.text_field :title %></td>

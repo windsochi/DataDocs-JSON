@@ -6,6 +6,7 @@
     <th>Link</th>
     <th>Title</th>
     <th></th>
+    <th></th>
   </tr>
   <% @docs.each do |doc| %>
   <tr>
@@ -14,7 +15,8 @@
     <td><%= doc.date_of_issue %></td>
     <td><%= doc.link %></td>
     <td><%= doc.title %></td>
-    <td><%= link_to 'Удалить', doc_path(doc), method: :delete %></td>
+    <td><%= link_to 'Edit', edit_doc_path(doc) %></td>
+    <td><%= link_to 'Delete', doc_path(doc), method: :delete %></td>
   </tr>
   <% end %>
 </table>

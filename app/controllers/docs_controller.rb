@@ -1,7 +1,7 @@
 class DocsController < ApplicationController
   before_filter :cors_preflight_check
   after_filter :cors_set_access_control_headers
-  before_action :find_doc, only: [:destroy]
+  before_action :find_doc, only: [:destroy, :edit, :update]
 
   def index
     respond_to do |format|
@@ -42,14 +42,16 @@ class DocsController < ApplicationController
   #   end
   # end
 
-  def show
-  end
+  # def show
+  # end
 
-  def edit
-  end
+  # def edit
+  # end
 
-  def update
-  end
+  # def update
+  #   @doc.update(doc_params)
+  #   redirect_to docs_path
+  # end
 
   # def destroy
   #   @doc.destroy
@@ -59,11 +61,7 @@ class DocsController < ApplicationController
   private
 
   def doc_params
-    params.require(:doc).permit(:number, :link, :date_of_issue, :title, :description)
-  end
-
-  def doc_json
-    Doc.last
+    params.require(:doc).permit(:number, :link, :date_of_issue, :title)
   end
 
   def find_doc

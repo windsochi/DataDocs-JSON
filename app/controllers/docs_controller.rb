@@ -5,7 +5,7 @@ class DocsController < ApplicationController
 
   def index
     respond_to do |format|
-      format.html {@docs = Doc.all}
+      format.html {render text: "Data"}
       format.json {render json:
         Doc.where(date_of_issue: params[:start]..params[:finish])
         #http://localhost:3000/docs.json?start=2002-01-01&finish=2002-12-31
@@ -29,34 +29,34 @@ class DocsController < ApplicationController
     end
   end
 
-  def new
-    @doc = Doc.new
-  end
+  # def new
+  #   @doc = Doc.new
+  # end
 
-  def create
-    @doc = Doc.new(doc_params)
-    if @doc.save
-      redirect_to docs_path
-    else
-      redirect_to new_doc_path
-    end
-  end
+  # def create
+  #   @doc = Doc.new(doc_params)
+  #   if @doc.save
+  #     redirect_to docs_path
+  #   else
+  #     redirect_to new_doc_path
+  #   end
+  # end
 
-  def show
-  end
+  # def show
+  # end
 
-  def edit
-  end
+  # def edit
+  # end
 
-  def update
-    @doc.update(doc_params)
-    redirect_to docs_path
-  end
+  # def update
+  #   @doc.update(doc_params)
+  #   redirect_to docs_path
+  # end
 
-  def destroy
-    @doc.destroy
-    redirect_to docs_path
-  end
+  # def destroy
+  #   @doc.destroy
+  #   redirect_to docs_path
+  # end
 
   private
 

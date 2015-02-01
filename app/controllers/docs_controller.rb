@@ -29,34 +29,34 @@ class DocsController < ApplicationController
     end
   end
 
-  # def new
-  #   @doc = Doc.new
-  # end
+  def new
+    @doc = Doc.new
+  end
 
-  # def create
-  #   @doc = Doc.new(doc_params)
-  #   if @doc.save
-  #     redirect_to docs_path
-  #   else
-  #     redirect_to new_doc_path
-  #   end
-  # end
+  def create
+    @doc = Doc.new(doc_params)
+    if @doc.save
+      redirect_to docs_path
+    else
+      redirect_to new_doc_path
+    end
+  end
 
-  # def show
-  # end
+  def show
+  end
 
-  # def edit
-  # end
+  def edit
+  end
 
-  # def update
-  #   @doc.update(doc_params)
-  #   redirect_to docs_path
-  # end
+  def update
+    @doc.update(doc_params)
+    redirect_to docs_path
+  end
 
-  # def destroy
-  #   @doc.destroy
-  #   redirect_to docs_path
-  # end
+  def destroy
+    @doc.destroy
+    redirect_to docs_path
+  end
 
   private
 

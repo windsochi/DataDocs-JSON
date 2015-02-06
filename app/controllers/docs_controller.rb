@@ -1,11 +1,11 @@
-class DocsController < ApplicationController
+class DocsController < InheritedResources::Base
+  respond_to :json
   before_filter :cors_preflight_check
   after_filter :cors_set_access_control_headers
   before_action :find_doc, only: [:destroy, :edit, :update]
 
   def index
     respond_to do |format|
-      format.html {render text: "Data"}
       format.json {render json:
         Doc.where(date_of_issue: params[:start]..params[:finish])
         #http://localhost:3000/docs.json?start=2002-01-01&finish=2002-12-31

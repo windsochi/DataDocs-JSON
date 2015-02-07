@@ -11,6 +11,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'rails-html-sanitizer', '~> 1.0'
 gem 'responders', '~> 2.0'
 gem 'bower-rails'
+gem 'angular-rails-templates'
 
 group :development, :test do
   gem 'database_cleaner', '1.2.0'

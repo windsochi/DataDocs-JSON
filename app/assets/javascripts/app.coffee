@@ -1,2 +1,2 @@
-logbook_datadocs = angular.module('logbook_datadocs',[
+datadocs = angular.module('datadocs',[
 ])

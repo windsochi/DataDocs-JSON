@@ -11,6 +11,11 @@ class DocsController < InheritedResources::Base
         #http://localhost:3000/docs.json?start=2002-01-01&finish=2002-12-31
       }
     end
+    @docs = if params[:keywords]
+      Doc.where('name ilike ?',"%#{params[:keywords]}%")
+    else
+      []
+    end
   end
 
   def cors_set_access_control_headers

@@ -1,6 +1,7 @@
 datadocs = angular.module('datadocs',[
   'templates',
   'ngRoute',
+  'ngResource',
   'controllers'
 ])
 
@@ -21,13 +22,13 @@ docs = [
   }
 ]
 controllers = angular.module('controllers',[])
-controllers.controller("DocsController", [ '$scope', '$routeParams', '$location',
-  ($scope,$routeParams,$location)->
+controllers.controller("DocsController", [ '$scope', '$routeParams', '$location', '$resource',
+  ($scope,$routeParams,$location,$resource)->
     $scope.search = (keywords)->  $location.path("/").search('keywords',keywords)
+    Doc = $resource('/docs/:docId', { docId: "@id", format: 'json' })
 
     if $routeParams.keywords
-      keywords = $routeParams.keywords.toLowerCase()
-      $scope.docs = docs.filter (doc)-> doc.name.toLowerCase().indexOf(keywords) != -1
+      Doc.query(keywords: $routeParams.keywords, (results)-> $scope.docs = results)
     else
       $scope.docs = []
 ])

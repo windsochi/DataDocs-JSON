@@ -26,10 +26,9 @@
       <section class="well col-md-10 col-md-offset-1">
         <div class="col-md-1 h4">{{doc.id}}</div>
         <div class="col-md-2 h4">{{doc.date_of_issue}}</div>
-        <div class="col-md-5 h4">{{doc.title}}</div>
+        <div class="col-md-5 h4"><a href ng-click="view(doc.id)">{{doc.title}}</a></div>
         <div class="col-md-2 col-md-offset-2">
           <button ng-click="edit(doc.id)" class="btn btn-info">Edit</button>
-          <button ng-click="delete(doc.id)" class="btn btn-info">Delete</button>
         </div>
       </section>
     </li>

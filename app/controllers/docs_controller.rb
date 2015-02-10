@@ -6,12 +6,13 @@ class DocsController < ApplicationController
   # before_action :find_doc, only: [:destroy, :edit, :update]
 
   def index
-    # respond_to do |format|
-    #   format.json {render json:
-    #     Doc.where(date_of_issue: params[:start]..params[:finish])
-    #     #http://localhost:3000/docs.json?start=2002-01-01&finish=2002-12-31
-    #   }
-    # end
+    respond_to do |format|
+      format.json {render json:
+        Doc.where(date_of_issue: params[:start]..params[:finish])
+        #http://localhost:3000/docs.json?start=2002-01-01&finish=2002-12-31
+      }
+    end
+
     @docs = if params[:keywords]
       Doc.where('title ilike ?',"%#{params[:keywords]}%")
     else

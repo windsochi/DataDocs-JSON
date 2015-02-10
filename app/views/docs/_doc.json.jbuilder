@@ -1,1 +1,1 @@
-json.(doc, :id, :link, :title, :date_of_issue, :number)
+json.(doc, :link, :title, :date_of_issue, :number)

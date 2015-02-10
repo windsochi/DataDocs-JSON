@@ -18,6 +18,15 @@ datadocs.config([ '$routeProvider', 'flashProvider',
       .when('/',
         templateUrl: 'index.html'
         controller: 'DocsController'
+      ).when('/docs/new',
+         templateUrl: "form.html"
+         controller: 'DocController'
+      ).when('/docs/:docId',
+        templateUrl: "show.html"
+        controller: 'DocController'
+      ).when('/docs/:docId/edit',
+         templateUrl: "form.html"
+         controller: 'DocController'
       )
 ])
 

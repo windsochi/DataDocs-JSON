@@ -13,6 +13,7 @@ gem 'responders', '~> 2.0'
 gem 'bower-rails'
 gem 'angular-rails-templates'
 gem 'foreman'
+gem 'angular_rails_csrf'
 
 group :development, :test do
   gem 'database_cleaner', '1.2.0'

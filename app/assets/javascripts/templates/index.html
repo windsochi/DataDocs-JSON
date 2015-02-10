@@ -9,12 +9,18 @@
     </div>
     <div class="form-group col-md-6 col-md-offset-3 text-center">
       <button ng-click="search(keywords)" class="btn btn-primary btn-lg">Search</button>
+      <button ng-click="newDoc()" class="btn btn-info btn-lg">New Doc</button>
     </div>
   </form>
 </section>
 <hr>
 <section class="row" ng-if="docs">
   <h1 class="text-center h2">Results</h1>
+  <aside class="flash row">
+    <article flash-alert duration="0" active-class="alert" class="col-md-6 col-md-offset-3 col-sm-12">
+      {{flash.message}}
+    </article>
+  </aside>
   <ul class="list-unstyled">
     <li ng-repeat="doc in docs">
       <section class="well col-md-10 col-md-offset-1">
@@ -22,10 +28,11 @@
         <div class="col-md-2 h4">{{doc.date_of_issue}}</div>
         <div class="col-md-5 h4">{{doc.title}}</div>
         <div class="col-md-2 col-md-offset-2">
-          <button class="btn btn-info">Edit</button>
-          <button class="btn btn-danger">Delete</button>
+          <button ng-click="edit(doc.id)" class="btn btn-info">Edit</button>
+          <button ng-click="delete(doc.id)" class="btn btn-info">Delete</button>
         </div>
       </section>
     </li>
   </ul>
 </section>
+

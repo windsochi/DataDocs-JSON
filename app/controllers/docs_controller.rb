@@ -1,4 +1,5 @@
 class DocsController < ApplicationController
+  skip_before_filter :verify_authenticity_token
   # respond_to :json
   # before_filter :cors_preflight_check
   # after_filter :cors_set_access_control_headers
@@ -38,30 +39,30 @@ class DocsController < ApplicationController
   #   @doc = Doc.new
   # end
 
-  # def create
-  #   @doc = Doc.new(doc_params)
-  #   if @doc.save
-  #     redirect_to docs_path
-  #   else
-  #     redirect_to new_doc_path
-  #   end
-  # end
+  def create
+    @doc = Doc.new(params.require(:doc).permit(:number, :link, :date_of_issue, :title))
+    @doc.save
+    render 'show', status: 201
+  end
 
-  # def show
-  # end
+  def show
+    @doc = Doc.find(params[:id])
+  end
 
   # def edit
   # end
 
-  # def update
-  #   @doc.update(doc_params)
-  #   redirect_to docs_path
-  # end
+  def update
+    doc = Doc.find(params[:id])
+    doc.update_attributes(params.require(:doc).permit(:number, :link, :date_of_issue, :title))
+    head :no_content
+  end
 
-  # def destroy
-  #   @doc.destroy
-  #   redirect_to docs_path
-  # end
+  def destroy
+    doc = Doc.find(params[:id])
+    doc.destroy
+    head :no_content
+  end
 
   # private
 

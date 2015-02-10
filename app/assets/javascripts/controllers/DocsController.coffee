@@ -8,4 +8,9 @@ controllers.controller("DocsController", [ '$scope', '$routeParams', '$location'
       Doc.query(keywords: $routeParams.keywords, (results)-> $scope.docs = results)
     else
       $scope.docs = []
+
+    $scope.view = (docId)-> $location.path("/docs/#{docId}")
+
+    $scope.newDoc = -> $location.path("/docs/new")
+    $scope.edit      = (docId)-> $location.path("/docs/#{docId}/edit")
 ])
